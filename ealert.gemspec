@@ -10,8 +10,10 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Robert R Evans"]
   s.date = %q{2010-07-08}
+  s.default_executable = %q{stream}
   s.description = %q{Command line utility to stream twitter events.}
   s.email = %q{robert@codewranglers.org}
+  s.executables = ["stream"]
   s.extra_rdoc_files = [
     "LICENSE",
      "README.rdoc"
@@ -23,8 +25,19 @@ Gem::Specification.new do |s|
      "README.rdoc",
      "Rakefile",
      "VERSION",
+     "bin/stream",
+     "ealert.gemspec",
      "lib/ealert.rb",
-     "spec/ealert_spec.rb",
+     "lib/ealert/calais.rb",
+     "lib/ealert/parse.rb",
+     "lib/ealert/store.rb",
+     "lib/ealert/twitter_filter.rb",
+     "lib/ealert/version.rb",
+     "spec/ealert/calais_spec.rb",
+     "spec/ealert/parse_spec.rb",
+     "spec/ealert/store_spec.rb",
+     "spec/ealert/twitter_filter_spec.rb",
+     "spec/ealert/version_spec.rb",
      "spec/spec.opts",
      "spec/spec_helper.rb"
   ]
@@ -34,7 +47,11 @@ Gem::Specification.new do |s|
   s.rubygems_version = %q{1.3.7}
   s.summary = %q{Event Alert Daemon}
   s.test_files = [
-    "spec/ealert_spec.rb",
+    "spec/ealert/calais_spec.rb",
+     "spec/ealert/parse_spec.rb",
+     "spec/ealert/store_spec.rb",
+     "spec/ealert/twitter_filter_spec.rb",
+     "spec/ealert/version_spec.rb",
      "spec/spec_helper.rb"
   ]
 
