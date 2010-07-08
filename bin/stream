@@ -6,7 +6,8 @@ require 'ealert'
 if ARGV.first.nil?
   puts "What event do you want to stream?"
 else
-  keywords = ARGV.join(', ')
-  puts "Going to stream: #{keywords}"
-  ::EAlert::TwitterFilter.by_keywords(keywords, ['revans', 'g$ther*'])
+  keywords = ARGV.first
+  location = ARGV.last
+  puts "Going to stream: #{keywords} and store the results here: #{location}."
+  # ::EAlert::TwitterFilter.by_keywords(keywords, ['revans', 'g$ther*'])
 end
