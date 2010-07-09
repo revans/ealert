@@ -15,7 +15,7 @@ else
   #   Process.detach(pid)
   #   puts "Setup as a background process with PID: #{pid}."
   
-  options = ::Ealert::Options.parse(ARGV)
+  options = ::EAlert::Options.parse(ARGV)
   puts "YOUR Options: #{options.inspect}"
 end
 

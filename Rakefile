@@ -14,7 +14,6 @@ begin
 
     gem.add_development_dependency "rspec",     ">= 1.2.9"
     gem.add_development_dependency "yard",      ">= 0.5.8"
-    gem.add_development_dependency 'yardstick', '>= 0.1.0'
     
     gem.add_dependency 'mongo',             '= 0.19.1'
     gem.add_dependency 'mongo_ext',         '= 0.19.1'
