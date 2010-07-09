@@ -27,7 +27,7 @@ Gem::Specification.new do |s|
      "VERSION",
      "bin/stream",
      "ealert.gemspec",
-     "lib/config/stream.yaml",
+     "lib/config/events.yaml",
      "lib/ealert.rb",
      "lib/ealert/calais.rb",
      "lib/ealert/config.rb",
