@@ -1,0 +1,9 @@
+event:
+  keywords: "hurricane, tornado"
+  twitter:
+    login: demo
+    pass:  demo
+  db:
+    database:   localhost
+    collection: event_alert
+  pid: /Users/revans/Desktop/stream.pid
