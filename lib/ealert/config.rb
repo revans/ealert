@@ -9,7 +9,7 @@ module EAlert
         file      = File.join(File.expand_path(File.dirname(__FILE__)), '../config/stream.yaml')
         write_to  = File.join(File.expand_path("~"), '.stream.yaml')
         
-        File.open(write_to, 'w+') { |f| f.write(File.read(file).chomp!) }
+        File.open(write_to, 'w+') { |f| f.write(File.read(file)) }
       end
       
     end
