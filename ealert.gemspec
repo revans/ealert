@@ -65,8 +65,6 @@ Gem::Specification.new do |s|
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_development_dependency(%q<rspec>, [">= 1.2.9"])
-      s.add_development_dependency(%q<yard>, [">= 0.5.8"])
-      s.add_development_dependency(%q<yardstick>, [">= 0.1.0"])
       s.add_runtime_dependency(%q<mongo>, ["= 0.19.1"])
       s.add_runtime_dependency(%q<mongo_ext>, ["= 0.19.1"])
       s.add_runtime_dependency(%q<yajl-ruby>, ["= 0.7.6"])
@@ -75,8 +73,6 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<em-http-request>, ["= 0.2.7"])
     else
       s.add_dependency(%q<rspec>, [">= 1.2.9"])
-      s.add_dependency(%q<yard>, [">= 0.5.8"])
-      s.add_dependency(%q<yardstick>, [">= 0.1.0"])
       s.add_dependency(%q<mongo>, ["= 0.19.1"])
       s.add_dependency(%q<mongo_ext>, ["= 0.19.1"])
       s.add_dependency(%q<yajl-ruby>, ["= 0.7.6"])
@@ -86,8 +82,6 @@ Gem::Specification.new do |s|
     end
   else
     s.add_dependency(%q<rspec>, [">= 1.2.9"])
-    s.add_dependency(%q<yard>, [">= 0.5.8"])
-    s.add_dependency(%q<yardstick>, [">= 0.1.0"])
     s.add_dependency(%q<mongo>, ["= 0.19.1"])
     s.add_dependency(%q<mongo_ext>, ["= 0.19.1"])
     s.add_dependency(%q<yajl-ruby>, ["= 0.7.6"])
