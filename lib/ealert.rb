@@ -21,10 +21,7 @@ require File.join(base, 'ealert/version')
 
 
 module EAlert
-  DATABASE  = 'event_alert'
-  HOST      = 'localhost'
-  PORT      = 27017
-  LICENSE   = 'tjefdbrxgpqsj6e69uwfzf2j'
+  EVENT_DIR = File.expand_path("~/.event_stream")
   
   autoload :TwitterFilter,    'ealert/twitter_filter'
   autoload :Parse,            'ealert/parse'

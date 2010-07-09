@@ -2,8 +2,8 @@ module EAlert
   class Calais
     class << self
 
-      def process_tweet(tweet)
-        data = get_info(tweet)
+      def process_tweet(tweet, license)
+        data = get_info(tweet, license)
         {
           :keywords     => process_keywords(data.categories),
           :language     => data.language,
@@ -13,11 +13,11 @@ module EAlert
       
       private
         
-        def get_info(tweet)
+        def get_info(tweet, license)
           ::Calais.process_document(
               :content      => tweet,
               :content_type => :html, 
-              :license_id   => ::EAlert::LICENSE
+              :license_id   => license
           )
         end
         

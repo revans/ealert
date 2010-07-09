@@ -1,0 +1,12 @@
+event:
+  keywords: "hurricane, tornado"
+  twitter:
+    login: demo
+    pass:  demo
+  calais_license: 'tjefdbrxgpqsj6e69uwfzf2j'
+  mongodb:
+    host:       localhost
+    database:   event_alert
+    collection: disasters
+    port:       27017
+  pid: /Users/revans/Desktop/stream.pid
