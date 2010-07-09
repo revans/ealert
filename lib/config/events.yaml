@@ -9,4 +9,3 @@ event:
     database:   event_alert
     collection: disasters
     port:       27017
-  pid: /Users/revans/Desktop/stream.pid
