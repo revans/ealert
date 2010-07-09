@@ -32,4 +32,5 @@ module EAlert
   autoload :Store,            'ealert/store'
   autoload :Config,           'ealert/config'
   autoload :Options,          'ealert/options'
+  autoload :Stream,           'ealert/stream'
 end
