@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Robert R Evans"]
-  s.date = %q{2010-07-08}
+  s.date = %q{2010-07-09}
   s.default_executable = %q{stream}
   s.description = %q{Command line utility to stream twitter events.}
   s.email = %q{robert@codewranglers.org}
@@ -27,10 +27,14 @@ Gem::Specification.new do |s|
      "VERSION",
      "bin/stream",
      "ealert.gemspec",
+     "lib/config/stream.yaml",
      "lib/ealert.rb",
      "lib/ealert/calais.rb",
+     "lib/ealert/config.rb",
+     "lib/ealert/options.rb",
      "lib/ealert/parse.rb",
      "lib/ealert/store.rb",
+     "lib/ealert/stream.rb",
      "lib/ealert/twitter_filter.rb",
      "lib/ealert/version.rb",
      "spec/ealert/calais_spec.rb",
