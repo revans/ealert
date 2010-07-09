@@ -6,14 +6,17 @@ require 'ealert'
 if ARGV.first.nil?
   puts "What event do you want to stream?"
 else
-  keywords = ARGV.first
-  location = ARGV.last
-  pid = fork do
-    Signal.trap('HUP', 'IGNORE')
-    ::EAlert::TwitterFilter.by_keywords(keywords, location, ['revans', ''])
-  end
-  Process.detach(pid)
-  puts "Setup as a background process with PID: #{pid}."
+  # keywords = ARGV.first
+  #   location = ARGV.last
+  #   pid = fork do
+  #     Signal.trap('HUP', 'IGNORE')
+  #     ::EAlert::TwitterFilter.by_keywords(keywords, location, ['revans', ''])
+  #   end
+  #   Process.detach(pid)
+  #   puts "Setup as a background process with PID: #{pid}."
+  
+  options = ::Ealert::Options.parse(ARGV)
+  puts "YOUR Options: #{options.inspect}"
 end
 
 
