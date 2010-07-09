@@ -7,7 +7,7 @@ module EAlert
       #
       def generate!
         file = File.join(File.expand_path(File.dirname(__FILE__)), '../config/stream.yml')
-        File.open("~/.stream.yaml", '+w') do |f|
+        File.open("~/.stream.yaml", 'w+') do |f|
           f.write(File.read(file).chomp!)
         end
       end

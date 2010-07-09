@@ -19,7 +19,7 @@ module EAlert
         end
         
         opts.on_tail("-v", "--version", "Show version") do
-          puts "Event Streamer is currently at version #{::EAlert.version}."
+          puts "Event Streamer is currently at version #{::EAlert.version}"
           exit
         end
       end
