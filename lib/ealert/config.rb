@@ -6,10 +6,10 @@ module EAlert
       # Generate the yaml file that will be used to stream tweets
       #
       def generate!
-        file = File.join(File.expand_path(File.dirname(__FILE__)), '../config/stream.yml')
-        File.open("~/.stream.yaml", 'w+') do |f|
-          f.write(File.read(file).chomp!)
-        end
+        file      = File.join(File.expand_path(File.dirname(__FILE__)), '../config/stream.yml')
+        write_to  = File.join(File.expand_path("~"), '.stream.yaml')
+        
+        File.open(write_to, 'w+') { |f| f.write(File.read(file).chomp!) }
       end
       
     end
