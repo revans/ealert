@@ -26,12 +26,11 @@ module EAlert
     # @api    private
     #
     def self.fork_event(config, event_name)
-      file  = File.join(::EAlert::EVENT_DIR, "#{event_name}.json")
       auth  = [config['twitter']['login'], config['twitter']['pass']]
       
       pid   = fork do
         ::Signal.trap('HUP', 'IGNORE')
-        ::EAlert::TwitterFilter.by_keywords(config['keywords'], file, auth)
+        ::EAlert::TwitterFilter.by_keywords(config['keywords'], event_name, auth)
       end
       
       ::Process.detach(pid)
