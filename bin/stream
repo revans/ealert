@@ -16,9 +16,14 @@ else
   #   puts "Setup as a background process with PID: #{pid}."
   
   options = ::EAlert::Options.parse(ARGV)
-  puts "Event: #{options.event}"
-  config = ::EAlert::Stream.event(options.event)
-  puts "Config:: #{config.inspect}"
+  
+  puts "Options: #{options.inspect}"
+  
+  if options.event
+    puts "Event: #{options.event}"
+    config = ::EAlert::Stream.event(options.event)
+    puts "Config:: #{config.inspect}"
+  end
 end
 
 

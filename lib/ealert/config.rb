@@ -8,8 +8,19 @@ module EAlert
       def generate!
         file      = File.join(File.expand_path(File.dirname(__FILE__)), '../config/events.yaml')
         `mkdir -p #{::EAlert::EVENT_DIR}` unless File.exists?(::EAlert::EVENT_DIR)
-        write_to  = File.join(::EAlert::EVENT_DIR, 'events.yaml')
-        File.open(write_to, 'w+') { |f| f.write(File.read(file)) }
+        File.open(config, 'w+') { |f| f.write(File.read(file)) }
+      end
+      
+      
+      def config
+        File.join(::EAlert::EVENT_DIR, 'events.yaml')
+      end
+      
+      
+      def events
+        @events = []
+        File.open(config) { |event| YAML::load(event) }.each { |k,v| @events << k }
+        @events
       end
       
     end

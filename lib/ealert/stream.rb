@@ -1,9 +1,9 @@
 module EAlert
   class Stream
     
-    def self.event(name)
-      @config = ::YAML.load(File.join(::EAlert::EVENT_DIR, 'events.yaml'))[name.to_sym]
-      @config
+    def self.event(name)      
+      @config = ::EAlert::Config.events
+      @config[name.to_s]
     end
     
   end
