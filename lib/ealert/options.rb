@@ -8,11 +8,7 @@ module EAlert
         opts.on('-g', '--generate-config', "Generate the config file.") do
           ::EAlert::Config.generate!
         end
-        
-        # opts.on('--event name', 'Run all events in your YAML file, or pick a specific one.') do |event|
-        #           options.event = event
-        #         end
-        
+
         event_list = ::EAlert::Config.events.join(', ')
         opts.on('--event EVENT', ::EAlert::Config.events, "Select an event to stream", "  (#{event_list})") do |event|
           options.event = event

@@ -6,15 +6,6 @@ require 'ealert'
 if ARGV.first.nil?
   puts "What event do you want to stream?"
 else
-  # keywords = ARGV.first
-  #   location = ARGV.last
-  #   pid = fork do
-  #     Signal.trap('HUP', 'IGNORE')
-  #     ::EAlert::TwitterFilter.by_keywords(keywords, location, ['revans', ''])
-  #   end
-  #   Process.detach(pid)
-  #   puts "Setup as a background process with PID: #{pid}."
-  
   options = ::EAlert::Options.parse(ARGV)
   
   if options.event
@@ -22,20 +13,3 @@ else
     ::EAlert::Stream.event(options.event)
   end
 end
-
-
-# TODO:
-#
-# Read a YAML file to know what twitter login/pass to use
-# which keyword(s) to track, and the mongo database/collection to use.
-#
-# Sample YAML
-#
-# twitter:
-#   login: demo
-#   pass:  demo
-# keywords: hurricane, tornado
-# db:
-#   database:   localhost
-#   collection: event_alert
-# pid: /Users/revans/Desktop/stream.pid
