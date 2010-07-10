@@ -5,16 +5,16 @@ module EAlert
       options = OpenStruct.new
       
       opts = ::OptionParser.new do |opts|
-        opts.on('-g', '--generate-config', "Generate the config file.") do
+        opts.on('-g', '--generate-config', "Generate the config file (it's required).") do
           ::EAlert::Config.generate!
         end
 
         event_list = ::EAlert::Config.events.join(', ')
-        opts.on('--event EVENT', ::EAlert::Config.events, "Select an event to stream", "  (#{event_list})") do |event|
+        opts.on('--event EVENT', ::EAlert::Config.events, "Select an event to stream.", "  (#{event_list})") do |event|
           options.event = event
         end
         
-        opts.on_tail("-h", "--help", "Show this message") do
+        opts.on_tail("-h", "--help", "Help Screen") do
           puts opts
           exit
         end

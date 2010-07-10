@@ -12,11 +12,23 @@ module EAlert
       end
       
       
+      ##
+      # Config
+      #
+      # @return [Object]
+      # @api    private
+      #
       def config
         File.join(::EAlert::EVENT_DIR, 'events.yaml')
       end
       
       
+      ##
+      # Events
+      #
+      # @return [Array]
+      # @api    private
+      #
       def events
         @events = []
         File.open(config) { |event| YAML::load(event) }.each { |k,v| @events << k }
