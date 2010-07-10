@@ -17,12 +17,9 @@ else
   
   options = ::EAlert::Options.parse(ARGV)
   
-  puts "Options: #{options.inspect}"
-  
   if options.event
-    puts "Event: #{options.event}"
-    config = ::EAlert::Stream.event(options.event)
-    puts "Config:: #{config.inspect}"
+    puts "Starting to stream the following event: #{options.event}."
+    ::EAlert::Stream.event(options.event)
   end
 end
 

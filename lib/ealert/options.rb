@@ -13,8 +13,8 @@ module EAlert
         #           options.event = event
         #         end
         
-        event_list = ::EAlert::Config.events
-        opts.on('--event EVENT', "Select an event to stream", "  (#{event_list})") do |event|
+        event_list = ::EAlert::Config.events.join(', ')
+        opts.on('--event EVENT', ::EAlert::Config.events, "Select an event to stream", "  (#{event_list})") do |event|
           options.event = event
         end
         
