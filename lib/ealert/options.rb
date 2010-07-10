@@ -14,6 +14,10 @@ module EAlert
           options.event = event
         end
         
+        opts.on('--kill EVENT', ::EAlert::Config.events, "Kill a running event", "  (#{event_list})") do |event|
+          options.kill_event = event
+        end
+        
         opts.on_tail("-h", "--help", "Help Screen") do
           puts opts
           exit

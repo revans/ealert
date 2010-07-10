@@ -3,6 +3,18 @@ module EAlert
     
     
     ##
+    # Kill Event
+    #
+    # @param  [String]
+    # @api    private
+    #
+    def self.kill_event(name)
+      pid = File.read(File.join(::EAlert::EVENT_DIR, "#{name}.pid")) 
+      `kill -9 #{pid}`
+    end
+    
+    
+    ##
     # Event
     # 
     # @param  [String]

@@ -12,4 +12,9 @@ else
     puts "Starting to stream the following event: #{options.event}."
     ::EAlert::Stream.event(options.event)
   end
+  
+  if options.kill_event
+    puts "Killing #{options.kill_event} streaming event."
+    ::EAlert::Stream.kill_event(options.kill_event)
+  end
 end
