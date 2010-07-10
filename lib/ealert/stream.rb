@@ -9,7 +9,7 @@ module EAlert
     # @api    private
     #
     def self.kill_event(name)
-      pid = File.read(File.join(::EAlert::EVENT_DIR, "#{name}.pid")) 
+      pid = File.read(File.join(::EAlert::USER_CONFIG, "#{name}.pid")) 
       `kill -9 #{pid}`
     end
     
@@ -21,7 +21,7 @@ module EAlert
     # @api    private
     #
     def self.event(name)      
-      config = File.open(File.join(::EAlert::EVENT_DIR, 'events.yaml')) { |event| YAML::load(event) }
+      config = File.open(File.join(::EAlert::USER_CONFIG, 'events.yaml')) { |event| YAML::load(event) }
       fork_event(config[name.to_s], name)
     end
     
@@ -57,7 +57,7 @@ module EAlert
     # @api    private
     #
     def self.write_pid(event, pid)
-      File.open(File.join(::EAlert::EVENT_DIR, "#{event}.pid"), 'w+') { |f| f.write(pid) }
+      File.open(File.join(::EAlert::USER_CONFIG, "#{event}.pid"), 'w+') { |f| f.write(pid) }
     end
     
   end

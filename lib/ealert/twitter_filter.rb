@@ -9,7 +9,7 @@ module EAlert
     # @api    Private
     #
     def self.by_keywords(keywords, event_name, auth=[])
-      file      = File.expand_path(::EAlert::EVENT_DIR) + '/tweets' 
+      file      = File.expand_path(::EAlert::USER_CONFIG) + '/tweets' 
       filters   = keywords.split(',').collect! { |w| w.strip }.join(',') # TODO: Sanitize
 
       `mkdir -p #{file}` unless File.exists?(file)

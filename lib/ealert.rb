@@ -21,7 +21,8 @@ require File.join(base, 'ealert/version')
 
 
 module EAlert
-  EVENT_DIR = File.expand_path("~/.event_stream")
+  USER_CONFIG     = File.expand_path("~/.event_stream")
+  INTERNAL_CONFIG = File.join(File.expand_path(File.dirname(__FILE__)), '../config/events.yaml')
   
   autoload :TwitterFilter,    'ealert/twitter_filter'
   autoload :Parse,            'ealert/parse'

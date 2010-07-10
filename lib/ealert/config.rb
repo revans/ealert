@@ -6,20 +6,19 @@ module EAlert
       # Generate the yaml file that will be used to stream tweets
       #
       def generate!
-        file      = File.join(File.expand_path(File.dirname(__FILE__)), '../config/events.yaml')
-        `mkdir -p #{::EAlert::EVENT_DIR}` unless File.exists?(::EAlert::EVENT_DIR)
-        File.open(config, 'w+') { |f| f.write(File.read(file)) }
+        `mkdir -p #{::EAlert::USER_CONFIG}` unless File.exists?(::EAlert::USER_CONFIG)
+        File.open(user_config, 'w+') { |f| f.write(File.read(::EAlert::INTERNAL_CONFIG)) }
       end
       
       
       ##
-      # Config
+      # User Config
       #
       # @return [Object]
       # @api    private
       #
-      def config
-        File.join(::EAlert::EVENT_DIR, 'events.yaml')
+      def user_config
+        File.join(::EAlert::USER_CONFIG, 'events.yaml')
       end
       
       
@@ -31,7 +30,7 @@ module EAlert
       #
       def events
         @events = []
-        File.open(config) { |event| YAML::load(event) }.each { |k,v| @events << k }
+        File.open(user_config) { |event| YAML::load(event) }.each { |k,v| @events << k }
         @events
       end
       
