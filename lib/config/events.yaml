@@ -1,4 +1,4 @@
-hurricane:
+hurricane: &defaults
   keywords: "hurricane, hurricanes, #hurricane, #hurricanes"
   twitter:
     login: demo
@@ -10,3 +10,6 @@ hurricane:
     collection: disasters
     port:       27017
 
+tornado:
+  <<: *defaults
+  keywords: "tornado, #tornado"
