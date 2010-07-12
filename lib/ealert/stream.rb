@@ -42,7 +42,7 @@ module EAlert
       
       pid   = fork do
         ::Signal.trap('HUP', 'IGNORE')
-        ::EAlert::TwitterFilter.by_keywords(config['keywords'], event_name, auth)
+        ::EAlert::TwitterFilter.by_keywords(config, event_name)
       end
       
       ::Process.detach(pid)

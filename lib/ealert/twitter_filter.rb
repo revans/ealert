@@ -8,9 +8,10 @@ module EAlert
     # @param  [String, String, Array]
     # @api    Private
     #
-    def self.by_keywords(keywords, event_name, auth=[])
+    def self.by_keywords(config, event_name)
+      auth      = [config['twitter']['login'], config['twitter']['pass']]
       file      = File.expand_path(::EAlert::USER_CONFIG) + '/tweets' 
-      filters   = keywords.split(',').collect! { |w| w.strip }.join(',') # TODO: Sanitize
+      filters   = config['keywords'].split(',').collect! { |w| w.strip }.join(',') # TODO: Sanitize
 
       `mkdir -p #{file}` unless File.exists?(file)
   
@@ -20,7 +21,8 @@ module EAlert
           :query  => {:track          => filters}
         )
         http.stream do |chunk| 
-          File.open(File.join(file,"#{Date.today.to_s}_#{event_name}.json"), 'a+') { |f| f.write(chunk) }
+          # File.open(File.join(file,"#{Date.today.to_s}_#{event_name}.json"), 'a+') { |f| f.write(chunk) }
+          ::EAlert::Parse.json(chunk)
         end
       end
     

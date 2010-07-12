@@ -1,18 +1,27 @@
 module EAlert
   class Parse
     class << self
+    
       
-      def json
-        json_files.each do |file|
-          json_array    = File.open(file).collect { |line| line }
-          @parsed_json  = json_array.collect { |json| ::Yajl::Parser.new(:symbolize_keys => true).parse(json) }
+      def json(chunk, config)
+        store = ::EAlert::Store.new(config)
+        
+        if chunk.is_a?(Array)
+          chunk.each do |tweet|
+            parsing(tweet, store)
+          end
+        else
+          parsing(chunk, store)
         end
-        @parsed_json
       end
       
-      def json_files 
-        Dir.glob(File.join(File.dirname(__FILE__) + '/tweets', '*.json'))
+      
+      
+      def parsing(tweet, store)
+        twit = ::Yajl::Parser.new(:symbolize_keys => true).parse(tweet)
+        store.insert(twit)
       end
+      
       
     end
   end
