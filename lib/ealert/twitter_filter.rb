@@ -15,7 +15,7 @@ module EAlert
 
       uri = URI.encode("http://#{username}:#{password}@stream.twitter.com/1/statuses/filter.json?track=#{filters}")
       ::Yajl::HttpStream.post(uri, :symbolize_keys => true) do |tweet|
-        store.insert(tweet)
+        @store.insert(tweet)
       end
     end
     
