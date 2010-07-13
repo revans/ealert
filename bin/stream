@@ -9,7 +9,7 @@ else
   options = ::EAlert::Options.parse(ARGV)
   
   if options.event
-    puts "Starting to stream the following event: #{options.event}."
+    puts "Starting to stream the following event: #{options.event}. The results will be stored in your selected mongo database."
     ::EAlert::Stream.event(options.event)
   end
   

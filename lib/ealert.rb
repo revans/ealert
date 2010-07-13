@@ -4,6 +4,7 @@ libraries = %w(date ostruct optparse yaml)
 libraries.each { |lib| require lib }
 
 begin
+  require 'em-http'
   require 'uri'
   require 'yajl/gzip'
   require 'yajl/deflate'

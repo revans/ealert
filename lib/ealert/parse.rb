@@ -3,25 +3,10 @@ module EAlert
     class << self
     
       
-      def json(chunk, config)
-        store = ::EAlert::Store.new(config)
-        
-        if chunk.is_a?(Array)
-          chunk.each do |tweet|
-            parsing(tweet, store)
-          end
-        else
-          parsing(chunk, store)
-        end
-      end
-      
-      
-      
-      def parsing(tweet, store)
+      def json(tweet)
         twit = ::Yajl::Parser.new(:symbolize_keys => true).parse(tweet)
-        store.insert(twit)
       rescue Exception => e
-        raise StandardError.new("Parsing failed. Was trying to parse:\n#{tweet.inspect}\n\nEncountered the following error: #{e.backtrace}")
+        raise StandardError.new("\n\nParsing failed. Was trying to parse:\n#{tweet.inspect}\n\nEncountered the following error: #{e.backtrace}\n\n")
       end
       
       
