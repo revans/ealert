@@ -4,8 +4,11 @@ libraries = %w(date ostruct optparse yaml)
 libraries.each { |lib| require lib }
 
 begin
-  require 'em-http'
-  require 'yajl'
+  require 'uri'
+  require 'yajl/gzip'
+  require 'yajl/deflate'
+  require 'yajl/http_stream'
+  
   require 'calais'
   require 'simplegeo'
   require 'mongo'
