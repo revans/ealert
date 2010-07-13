@@ -20,6 +20,8 @@ module EAlert
       def parsing(tweet, store)
         twit = ::Yajl::Parser.new(:symbolize_keys => true).parse(tweet)
         store.insert(twit)
+      rescue Exception => e
+        raise StandardError.new("Parsing failed. Was trying to parse:\n#{tweet.inspect}\n\nEncountered the following error: #{e.backtrace}")
       end
       
       
