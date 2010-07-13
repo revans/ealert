@@ -9,7 +9,7 @@ module EAlert
     # @api    private
     #
     def self.kill_event(name)
-      pid = File.read(File.join(::EAlert::USER_CONFIG, "#{name}.pid")) 
+      pid = File.read(File.join(::EAlert::USER_CONFIG, "pids/#{name}.pid")) 
       `kill -9 #{pid}`
     end
     
@@ -24,11 +24,6 @@ module EAlert
       config = File.open(File.join(::EAlert::USER_CONFIG, 'events.yaml')) { |event| YAML::load(event) }
       fork_event(config[name.to_s], name)
     end
-    
-    
-    # Config:: {"mongodb"=>{"port"=>27017, "database"=>"event_alert", "host"=>"localhost", "collection"=>"disasters"}, "calais_license"=>"tjefdbrxgpqsj6e69uwfzf2j", "twitter"=>{"pass"=>"demo", "login"=>"demo"}, "keywords"=>"hurricane, hurricanes, #hurricane, #hurricanes"} :: Hash
-    
-    
     
     
     ##
@@ -57,7 +52,9 @@ module EAlert
     # @api    private
     #
     def self.write_pid(event, pid)
-      File.open(File.join(::EAlert::USER_CONFIG, "#{event}.pid"), 'w+') { |f| f.write(pid) }
+      file = File.join(::EAlert::USER_CONFIG, "pids/#{event}.pid")
+      system("mkdir -p #{file}") unless File.exists?(file)
+      File.open(file, 'w+') { |f| f.write(pid) }
     end
     
   end

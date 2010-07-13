@@ -1,5 +1,5 @@
 hurricane: &defaults
-  keywords: "hurricane, hurricanes, #hurricane, #hurricanes"
+  keywords: "#hurricane, #hurricanes"
   twitter:
     login: demo
     pass:  demo
@@ -12,4 +12,12 @@ hurricane: &defaults
 
 tornado:
   <<: *defaults
-  keywords: "tornado, #tornado"
+  keywords: "#tornado, #tornadoes"
+
+earthquake: 
+  <<: *defaults
+  keywords: '#earthquake, #earthquakes'
+
+flood: 
+  <<: *defaults
+  keywords: '#flood, #floods'
