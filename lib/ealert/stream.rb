@@ -52,9 +52,9 @@ module EAlert
     # @api    private
     #
     def self.write_pid(event, pid)
-      file = File.join(::EAlert::USER_CONFIG, "pids/#{event}.pid")
+      file = File.join(::EAlert::USER_CONFIG, "pids")
       system("mkdir -p #{file}") unless File.exists?(file)
-      File.open(file, 'w+') { |f| f.write(pid) }
+      File.open(File.join(file, "#{event}.pid"), 'w+') { |f| f.write(pid) }
     end
     
   end
