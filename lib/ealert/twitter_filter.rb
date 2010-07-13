@@ -22,7 +22,8 @@ module EAlert
         )
         http.stream do |chunk| 
           # File.open(File.join(file,"#{Date.today.to_s}_#{event_name}.json"), 'a+') { |f| f.write(chunk) }
-          ::EAlert::Parse.json(chunk)
+          a = ::EAlert::Parse.json(chunk)
+          STDOUT.puts(a)
         end
       end
     
