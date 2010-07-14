@@ -8,7 +8,7 @@ module EAlert
     # @param  [String, String, Array]
     # @api    Private
     #
-    def self.by_keywords(config, event_name)
+    def self.by_keywords(config, event_name, debug)
       auth    = [config['twitter']['login'], config['twitter']['pass']]
       filters = config['keywords'].split(',').collect! { |w| w.strip }.join(',') # TODO: Sanitize
       @store  = ::EAlert::Store.new(config)
@@ -28,6 +28,7 @@ module EAlert
               tweet           = ::EAlert::Parse.json(line)
               tweet[:calais]  = @calais.process_tweet(tweet[:text])
               @store.insert(tweet)
+              STDOUT.puts "\n#{tweet.inspect}\n\n" if debug
             end
           end
         end

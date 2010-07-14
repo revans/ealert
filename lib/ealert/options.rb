@@ -18,6 +18,10 @@ module EAlert
           options.kill_event = event
         end
         
+        opts.on('-d', '--debug', 'Output stream to Standard Out for debugging purposes.') do
+          options.debug = true
+        end
+        
         opts.on_tail("-h", "--help", "Help Screen") do
           puts opts
           exit

@@ -1,7 +1,7 @@
 module EAlert
   class Stream
-    
-    
+
+
     ##
     # Kill Event
     #
@@ -20,9 +20,9 @@ module EAlert
     # @param  [String]
     # @api    private
     #
-    def self.event(name)      
+    def self.event(name, debug)      
       config = File.open(File.join(::EAlert::USER_CONFIG, 'events.yaml')) { |event| YAML::load(event) }
-      fork_event(config[name.to_s], name)
+      fork_event(config[name.to_s], name, debug)
     end
     
     
@@ -32,12 +32,12 @@ module EAlert
     # @param  [Object, String]
     # @api    private
     #
-    def self.fork_event(config, event_name)
+    def self.fork_event(config, event_name, debug)
       auth  = [config['twitter']['login'], config['twitter']['pass']]
       
       pid   = fork do
         ::Signal.trap('HUP', 'IGNORE')
-        ::EAlert::TwitterFilter.by_keywords(config, event_name)
+        ::EAlert::TwitterFilter.by_keywords(config, event_name, debug)
       end
       
       ::Process.detach(pid)
