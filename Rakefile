@@ -17,7 +17,8 @@ begin
     
     gem.add_dependency 'mongo',             '= 0.19.1'
     gem.add_dependency 'mongo_ext',         '= 0.19.1'
-    gem.add_dependency 'yajl-ruby',         '= 0.7.6'
+    gem.add_dependency 'twitter-stream',    '= 0.1.6'
+    gem.add_dependency 'yajl-ruby',         '= 0.7.7'
     gem.add_dependency 'simplegeo',         '= 0.0.3'
     gem.add_dependency 'calais',            '= 0.0.9'
     gem.add_dependency 'em-http-request',   '= 0.2.7'

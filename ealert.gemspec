@@ -32,7 +32,6 @@ Gem::Specification.new do |s|
      "lib/ealert/calais.rb",
      "lib/ealert/config.rb",
      "lib/ealert/options.rb",
-     "lib/ealert/parse.rb",
      "lib/ealert/store.rb",
      "lib/ealert/stream.rb",
      "lib/ealert/twitter_filter.rb",
@@ -68,7 +67,8 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<yard>, [">= 0.5.8"])
       s.add_runtime_dependency(%q<mongo>, ["= 0.19.1"])
       s.add_runtime_dependency(%q<mongo_ext>, ["= 0.19.1"])
-      s.add_runtime_dependency(%q<yajl-ruby>, ["= 0.7.6"])
+      s.add_runtime_dependency(%q<twitter-stream>, ["= 0.1.6"])
+      s.add_runtime_dependency(%q<yajl-ruby>, ["= 0.7.7"])
       s.add_runtime_dependency(%q<simplegeo>, ["= 0.0.3"])
       s.add_runtime_dependency(%q<calais>, ["= 0.0.9"])
       s.add_runtime_dependency(%q<em-http-request>, ["= 0.2.7"])
@@ -77,7 +77,8 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<yard>, [">= 0.5.8"])
       s.add_dependency(%q<mongo>, ["= 0.19.1"])
       s.add_dependency(%q<mongo_ext>, ["= 0.19.1"])
-      s.add_dependency(%q<yajl-ruby>, ["= 0.7.6"])
+      s.add_dependency(%q<twitter-stream>, ["= 0.1.6"])
+      s.add_dependency(%q<yajl-ruby>, ["= 0.7.7"])
       s.add_dependency(%q<simplegeo>, ["= 0.0.3"])
       s.add_dependency(%q<calais>, ["= 0.0.9"])
       s.add_dependency(%q<em-http-request>, ["= 0.2.7"])
@@ -87,7 +88,8 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<yard>, [">= 0.5.8"])
     s.add_dependency(%q<mongo>, ["= 0.19.1"])
     s.add_dependency(%q<mongo_ext>, ["= 0.19.1"])
-    s.add_dependency(%q<yajl-ruby>, ["= 0.7.6"])
+    s.add_dependency(%q<twitter-stream>, ["= 0.1.6"])
+    s.add_dependency(%q<yajl-ruby>, ["= 0.7.7"])
     s.add_dependency(%q<simplegeo>, ["= 0.0.3"])
     s.add_dependency(%q<calais>, ["= 0.0.9"])
     s.add_dependency(%q<em-http-request>, ["= 0.2.7"])

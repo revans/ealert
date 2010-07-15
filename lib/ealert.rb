@@ -4,11 +4,14 @@ libraries = %w(date ostruct optparse yaml)
 libraries.each { |lib| require lib }
 
 begin
-  require 'em-http'
-  require 'uri'
-  require 'yajl/gzip'
-  require 'yajl/deflate'
-  require 'yajl/http_stream'
+  require 'twitter/json_stream'
+  require 'yajl'
+  
+  # require 'em-http'
+  # require 'uri'
+  # require 'yajl/gzip'
+  # require 'yajl/deflate'
+  # require 'yajl/http_stream'
   
   require 'calais'
   require 'simplegeo'
@@ -27,7 +30,6 @@ module EAlert
   INTERNAL_CONFIG = File.join(File.expand_path(File.dirname(__FILE__)), '../config/events.yaml')
   
   autoload :TwitterFilter,    'ealert/twitter_filter'
-  autoload :Parse,            'ealert/parse'
   autoload :Calais,           'ealert/calais'
   autoload :Store,            'ealert/store'
   autoload :Config,           'ealert/config'
