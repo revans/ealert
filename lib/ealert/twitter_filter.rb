@@ -110,8 +110,6 @@ module EAlert
       #     end
       #   end
       # end
-      rescue Exception => e
-        STDOUT.puts "\n\nException: #{e.backtrace}\n\n"
     end
     
     
