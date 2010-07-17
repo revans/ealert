@@ -35,11 +35,14 @@ module EAlert
     # @api    private
     #
     def self.fork_event(config, event_name, options)
-      auth  = [config['twitter']['login'], config['twitter']['pass']]
+      auth      = [config['twitter']['login'], config['twitter']['pass']]
+      debug     = !!options.debug
+      server    = !!options.server
+
       
-      pid   = fork do
+      pid = fork do
         ::Signal.trap('HUP', 'IGNORE')
-        ::EAlert::TwitterFilter.by_keywords(config, event_name, options)
+        ::EAlert::TwitterFilter.by_keywords(config, event_name, debug, server)
       end
       
       ::Process.detach(pid)

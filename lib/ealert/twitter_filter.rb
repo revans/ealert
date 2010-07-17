@@ -8,13 +8,14 @@ module EAlert
     # @param  [String, String, Array]
     # @api    Private
     #
-    def self.by_keywords(config, event_name, options={})
+    def self.by_keywords(config, event_name, debug, server)
       filters   = config['keywords'].split(',').collect! { |w| w.strip }.join(',') # TODO: Sanitize
       @store    = ::EAlert::Store.new(config)
       @calais   = ::EAlert::Calais.new(config['calais_license']) if config['calais_license']
-      @channel  = ::EM::Channel.new if options.server
       
       ::EventMachine::run {
+        @channel  = ::EM::Channel.new if server
+        
         stream = ::Twitter::JSONStream.connect(
           :path    => '/1/statuses/filter.json',
           :auth    => "#{config['twitter']['login']}:#{config['twitter']['pass']}",
@@ -27,12 +28,12 @@ module EAlert
           tweet[:calais]  = @calais.process_tweet(tweet[:text])
           @store.insert(tweet) # TODO: use em-mongo so we aren't blocking inside the reactor
           
-          if options.server
-            @channel.push "#{status[:user][:screen_name]}: #{status[:text]}\n\n" # TODO: Customize to html
+          if server
+            @channel.push "#{tweet[:user][:screen_name]}: #{tweet[:text]}\n\n" # TODO: Customize to html
           end
           
-          if options.debug
-            $stdout.print "\nitem: #{item}\n"
+          if debug
+            $stdout.print "\n#{tweet[:user][:screen_name]}: #{tweet[:text]}\n\n"
             $stdout.flush
           end
         end
@@ -56,8 +57,9 @@ module EAlert
           stream.stop
           ::EventMachine.stop if ::EventMachine.reactor_running? 
         end
+        
+        ::EAlert::WebSocketServer.start(@channel) if server
       }
-      ::EAlert::WebSocketServer.start(@channel) if options.server
     end
     
     
