@@ -36,4 +36,5 @@ module EAlert
   autoload :Config,           'ealert/config'
   autoload :Options,          'ealert/options'
   autoload :Stream,           'ealert/stream'
+  autoload :WebSocketServer,  'ealert/web_socket_server'
 end

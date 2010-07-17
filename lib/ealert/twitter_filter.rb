@@ -57,7 +57,7 @@ module EAlert
           ::EventMachine.stop if ::EventMachine.reactor_running? 
         end
       }
-
+      ::EAlert::WebSocketServer.start(@channel) if options.server
     end
     
     

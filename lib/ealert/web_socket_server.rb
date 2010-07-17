@@ -2,6 +2,7 @@ module EAlert
   class WebSocketServer
     
     def self.start(channel, host='0.0.0.0', port=9393, debug=false)
+      STDOUT.puts "A Web Socket Server was started at #{host}:#{port}."
       @channel = channel
       
       ::EventMachine::WebSocket.start(:host => host, :port => port, :debug => debug) do |ws|
@@ -17,7 +18,6 @@ module EAlert
           @channel.unsubscribe(@sid)
         }
       end
-      STDOUT.puts "A Web Socket Server was started at #{host}:#{port}."
     end
     
   end

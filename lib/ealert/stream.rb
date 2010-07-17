@@ -20,8 +20,9 @@ module EAlert
     # @param  [String]
     # @api    private
     #
-    def self.event(options)      
-      name    = options.event_name
+    def self.event(options)  
+      STDOUT.puts "\n\n#{options.inspect}\n\n"    
+      name    = options.event
       config  = File.open(File.join(::EAlert::USER_CONFIG, 'events.yaml')) { |event| YAML::load(event) }
       fork_event(config[name.to_s], name, options)
     end
