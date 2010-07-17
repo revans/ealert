@@ -22,6 +22,10 @@ module EAlert
           options.debug = true
         end
         
+        opts.on('-s', '--server', 'Start the a Web Socket Server') do
+          options.server = true
+        end
+        
         opts.on_tail("-h", "--help", "Help Screen") do
           puts opts
           exit

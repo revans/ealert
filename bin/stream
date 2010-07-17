@@ -7,11 +7,10 @@ if ARGV.first.nil?
   puts "What event do you want to stream?"
 else
   options = ::EAlert::Options.parse(ARGV)
-  debug   = !!options.debug
   
   if options.event
     puts "Starting to stream the following event: #{options.event}. The results will be stored in your selected mongo database."
-    ::EAlert::Stream.event(options.event, debug)
+    ::EAlert::Stream.event(options)
   end
   
   if options.kill_event
