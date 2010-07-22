@@ -29,7 +29,7 @@ module EAlert
       # @api    private
       #
       def events
-        return unless File.exists?(user_config)
+        return [] unless File.exists?(user_config)
         @events = []
         File.open(user_config) { |event| YAML::load(event) }.each { |k,v| @events << k }
         @events
