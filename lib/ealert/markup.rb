@@ -9,7 +9,7 @@ module EAlert
   </div>
   <div class='tweet_text'>
     <p>#{linkify(tweet[:text])}</p>
-    <p>#{tweet[:user][:screen_name]} tweeted this on #{tweet[:created_at]}</p>
+    <p><a href="http://www.twitter.com/#{tweet[:user][:screen_name]}">#{tweet[:user][:screen_name]}</a> tweeted this on #{tweet[:created_at]}</p>
   </div>
 </div>
       HTML
@@ -22,10 +22,11 @@ module EAlert
         text.split(' ').each do |word|          
           if word =~ /^http|https|www\./
             word.gsub!(word.to_s, "<a href='#{word}'>#{word}</a>")
-          elsif word =~ /^@\w/
-            name = word.to_s.gsub(/^@/, '')
-            word.gsub!(word.to_s, "<a href='http://www.twitter.com/#{name}>#{word}</a>")
           end
+          # if word =~ /^@\w/
+          #   name = word.to_s.gsub(/^@/, '')
+          #   word.gsub!(word.to_s, "<a href='http://www.twitter.com/#{name}>#{word}</a>")
+          # end
         end.join(' ')
       end
     
