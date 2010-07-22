@@ -30,5 +30,4 @@ module EAlert
   autoload :Options,          'ealert/options'
   autoload :Stream,           'ealert/stream'
   autoload :WebSocketServer,  'ealert/web_socket_server'
-  autoload :Markup,           'ealert/markup'
 end
