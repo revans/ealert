@@ -21,7 +21,7 @@ require File.join(base, 'ealert/version')
 
 module EAlert
   USER_CONFIG     = File.expand_path("~/.event_stream")
-  INTERNAL_CONFIG = File.join(File.expand_path(File.dirname(__FILE__)), '../config/events.yaml')
+  INTERNAL_CONFIG = File.join(File.expand_path(File.dirname(__FILE__)), 'config/events.yaml')
   
   autoload :TwitterFilter,    'ealert/twitter_filter'
   autoload :Calais,           'ealert/calais'
