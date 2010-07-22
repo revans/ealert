@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Robert R Evans"]
-  s.date = %q{2010-07-16}
+  s.date = %q{2010-07-22}
   s.default_executable = %q{stream}
   s.description = %q{Command line utility to stream twitter events.}
   s.email = %q{robert@codewranglers.org}
@@ -31,6 +31,7 @@ Gem::Specification.new do |s|
      "lib/ealert.rb",
      "lib/ealert/calais.rb",
      "lib/ealert/config.rb",
+     "lib/ealert/markup.rb",
      "lib/ealert/options.rb",
      "lib/ealert/store.rb",
      "lib/ealert/stream.rb",
@@ -45,7 +46,7 @@ Gem::Specification.new do |s|
      "spec/spec.opts",
      "spec/spec_helper.rb"
   ]
-  s.homepage = %q{http://github.com/revans/ealert}
+  s.homepage = %q{git.codewranglers.org:ealert.git}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.7}

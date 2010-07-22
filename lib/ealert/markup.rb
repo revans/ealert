@@ -5,10 +5,11 @@ module EAlert
       <<-HTML
 <div class="tweet">
   <div class='avatar'>
-    #{tweet[:user][:screen_name]}
+    #{tweet[:user][:profile_image_url]}
   </div>
   <div class='tweet_text'>
-    #{tweet[:text]}
+    <p>#{tweet[:text]}</p>
+    <p>#{tweet[:user][:screen_name]} tweeted this on #{tweet[:created_at]}</p>
   </div>
 </div>
       HTML
