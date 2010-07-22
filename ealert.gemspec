@@ -31,7 +31,6 @@ Gem::Specification.new do |s|
      "lib/ealert.rb",
      "lib/ealert/calais.rb",
      "lib/ealert/config.rb",
-     "lib/ealert/markup.rb",
      "lib/ealert/options.rb",
      "lib/ealert/store.rb",
      "lib/ealert/stream.rb",
