@@ -29,11 +29,12 @@ module EAlert
           @store.insert(tweet) # TODO: use em-mongo so we aren't blocking inside the reactor
           
           if server
-            @channel.push "#{tweet[:user][:screen_name]}: #{tweet[:text]}\n\n" # TODO: Customize to html
+            # @channel.push "#{tweet[:user][:screen_name]}: #{tweet[:text]}\n\n" # TODO: Customize to html
+            @channel.push ::EAlert::Markup.to_html(tweet)
           end
           
           if debug
-            $stdout.print "\n#{tweet[:user][:screen_name]}: #{tweet[:text]}\n\n"
+            $stdout.print "\n#{tweet.inspect}\n\n"
             $stdout.flush
           end
         end

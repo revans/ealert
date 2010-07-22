@@ -7,13 +7,6 @@ begin
   require 'em-websocket'
   require 'twitter/json_stream'
   require 'yajl'
-  
-  # require 'em-http'
-  # require 'uri'
-  # require 'yajl/gzip'
-  # require 'yajl/deflate'
-  # require 'yajl/http_stream'
-  
   require 'calais'
   require 'simplegeo'
   require 'mongo'
@@ -37,4 +30,5 @@ module EAlert
   autoload :Options,          'ealert/options'
   autoload :Stream,           'ealert/stream'
   autoload :WebSocketServer,  'ealert/web_socket_server'
+  autoload :Markup,           'ealert/markup'
 end

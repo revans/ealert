@@ -8,7 +8,7 @@ begin
     gem.summary       = %Q{Event Alert Daemon}
     gem.description   = %Q{Command line utility to stream twitter events.}
     gem.email         = "robert@codewranglers.org"
-    gem.homepage      = "http://github.com/revans/ealert"
+    gem.homepage      = "git.codewranglers.org:ealert.git"
     gem.authors       = ["Robert R Evans"]
     gem.version       = File.read('VERSION').chomp!
 
