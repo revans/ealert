@@ -5,7 +5,7 @@ module EAlert
       <<-HTML
 <div class="tweet">
   <div class='avatar'>
-    #{tweet[:user][:profile_image_url]}
+    <img src="#{tweet[:user][:profile_image_url]}" alt="#{tweet[:user][:screen_name]} Avatar" />
   </div>
   <div class='tweet_text'>
     <p>#{tweet[:text]}</p>
