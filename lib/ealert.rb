@@ -2,6 +2,7 @@ $:.unshift(File.dirname(__FILE__)) unless $:.include?(File.dirname(__FILE__)) ||
 
 libraries = %w(date ostruct optparse yaml)
 libraries.each { |lib| require lib }
+require 'rubygems'
 
 begin
   require 'em-websocket'
