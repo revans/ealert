@@ -7,8 +7,8 @@ module EAlert
                                     config['mongodb']['port']).db(
                                     config['mongodb']['database']).collection(
                                     config['mongodb']['collection'])
-      rescue Exception => e
-        raise ::EAlert::ConnectionError.new("There was an error connecting to the Mongo database.")
+      # rescue Exception => e
+      #   raise ::EAlert::ConnectionError.new("There was an error connecting to the Mongo database.")
     end
     
     def insert(hash)
