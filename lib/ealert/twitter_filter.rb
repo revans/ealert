@@ -39,18 +39,24 @@ module EAlert
         end
 
         stream.on_error do |message|
-          $stdout.print "\nerror: #{message}\n"
-          $stdout.flush
+          if debug
+            $stdout.print "\nerror: #{message}\n"
+            $stdout.flush
+          end
         end
 
         stream.on_reconnect do |timeout, retries|
-          $stdout.print "\nreconnecting in: #{timeout} seconds\n"
-          $stdout.flush
+          if debug
+            $stdout.print "\nreconnecting in: #{timeout} seconds\n"
+            $stdout.flush
+          end
         end
 
         stream.on_max_reconnects do |timeout, retries|
-          $stdout.print "\nFailed after #{retries} failed reconnects\n"
-          $stdout.flush
+          if debug
+            $stdout.print "\nFailed after #{retries} failed reconnects\n"
+            $stdout.flush
+          end
         end
 
         trap('TERM') do  
