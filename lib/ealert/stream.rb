@@ -39,15 +39,21 @@ module EAlert
       auth      = [config['twitter']['login'], config['twitter']['pass']]
       debug     = !!options.debug
       server    = !!options.server
-
       
-      pid = fork do
-        ::Signal.trap('HUP', 'IGNORE')
-        ::EAlert::TwitterFilter.by_keywords(config, event_name, debug, server)
+      parent_pid = fork do
+        Process.setsid
+        child_pid = fork do
+          ::Signal.trap('HUP', 'IGNORE')
+          ::EAlert::TwitterFilter.by_keywords(config, event_name, debug, server)
+          STDIN.reopen    '/dev/null'
+          STDOUT.reopen   '/dev/null', 'a'
+          STDERR.reopen   STDOUT
+        end
+        Process.detach(child_pid)
       end
       
-      ::Process.detach(pid)
-      write_pid(event_name, pid)
+      ::Process.detach(parent_pid)
+      write_pid(event_name, child_pid)
     end
     
     

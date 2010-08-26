@@ -12,16 +12,18 @@ begin
     gem.authors       = ["Robert R Evans"]
     gem.version       = File.read('VERSION').chomp!
 
-    gem.add_development_dependency "rspec",     ">= 1.3.0"
-    gem.add_development_dependency "yard",      ">= 0.5.8"
+    gem.add_development_dependency "rspec",           "~> 2.0.0.beta.20"
+    gem.add_development_dependency "yard",            "~> 0.5.8"
+    gem.add_development_dependency 'webmock',         "~> 1.3.4"
+    gem.add_development_dependency 'simplecov-html',  '~> 0.3.5'
     
-    gem.add_dependency 'mongo',             '= 0.19.1'
-    gem.add_dependency 'mongo_ext',         '= 0.19.1'
-    gem.add_dependency 'twitter-stream',    '= 0.1.6'
-    gem.add_dependency 'yajl-ruby',         '= 0.7.7'
-    gem.add_dependency 'simplegeo',         '= 0.0.3'
-    gem.add_dependency 'calais',            '= 0.0.10'
-    gem.add_dependency 'em-websocket',      '= 0.1.2'
+    gem.add_dependency 'mongo',                       '~> 0.19.1'
+    gem.add_dependency 'mongo_ext',                   '~> 0.19.1'
+    gem.add_dependency 'twitter-stream',              '~> 0.1.8'
+    gem.add_dependency 'yajl-ruby',                   '~> 0.7.7'
+    gem.add_dependency 'simplegeo',                   '~> 0.0.3'
+    gem.add_dependency 'calais',                      '~> 0.0.11'
+    gem.add_dependency 'em-websocket',                '~> 0.1.4'
 
   end
   Jeweler::GemcutterTasks.new
