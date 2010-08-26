@@ -38,22 +38,23 @@ module EAlert
       debug     = !!options.debug
       server    = !!options.server
       
-      parent_pid = fork do
+      @parent_pid = fork do
         Process.setsid
-        child_pid = fork do
+        @child_pid = fork do
           ::Signal.trap('HUP', 'IGNORE')
+          STDIN.reopen    '/dev/null'
+          STDOUT.reopen   '/dev/null', 'a'
+          STDERR.reopen   STDOUT
+          
           ::EAlert::TwitterFilter.by_keywords(config, event_name, debug, server)
-          unless debug
-            STDIN.reopen    '/dev/null'
-            STDOUT.reopen   '/dev/null', 'a'
-            STDERR.reopen   STDOUT
-          end
+          # unless debug
+          # end
         end
-        Process.detach(child_pid)
+        Process.detach(@child_pid)
       end
       
-      ::Process.detach(parent_pid)
-      write_pid(event_name, child_pid)
+      ::Process.detach(@parent_pid)
+      write_pid(event_name, @child_pid)
     end
     
     
