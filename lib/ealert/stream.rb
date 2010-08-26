@@ -10,7 +10,7 @@ module EAlert
     #
     def self.kill_event(name)
       pid = File.read(File.join(::EAlert::USER_CONFIG, "pids/#{name}.pid")) 
-      Process.kill("TERM", pid)
+      Process.kill("TERM", pid) if pid
     end
     
     
@@ -38,23 +38,22 @@ module EAlert
       debug     = !!options.debug
       server    = !!options.server
       
-      @parent_pid = fork do
+      parent_pid = fork do
         Process.setsid
-        @child_pid = fork do
+        child_pid = fork do
           ::Signal.trap('HUP', 'IGNORE')
-          STDIN.reopen    '/dev/null'
-          STDOUT.reopen   '/dev/null', 'a'
-          STDERR.reopen   STDOUT
-          
+          unless debug
+            STDIN.reopen    '/dev/null'
+            STDOUT.reopen   '/dev/null', 'a'
+            STDERR.reopen   STDOUT
+          end
           ::EAlert::TwitterFilter.by_keywords(config, event_name, debug, server)
-          # unless debug
-          # end
         end
-        Process.detach(@child_pid)
+        Process.detach(child_pid)
+        write_pid(event_name, child_pid)
       end
       
-      ::Process.detach(@parent_pid)
-      write_pid(event_name, @child_pid)
+      ::Process.detach(parent_pid)
     end
     
     
