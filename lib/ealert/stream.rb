@@ -11,7 +11,6 @@ module EAlert
     def self.kill_event(name)
       pid = File.read(File.join(::EAlert::USER_CONFIG, "pids/#{name}.pid")) 
       Process.kill("TERM", pid)
-      # `kill -9 #{pid}`
     end
     
     
@@ -22,7 +21,6 @@ module EAlert
     # @api    private
     #
     def self.event(options)  
-      STDOUT.puts "\n\n#{options.inspect}\n\n"    
       name    = options.event
       config  = File.open(File.join(::EAlert::USER_CONFIG, 'events.yaml')) { |event| YAML::load(event) }
       fork_event(config[name.to_s], name, options)
@@ -45,9 +43,11 @@ module EAlert
         child_pid = fork do
           ::Signal.trap('HUP', 'IGNORE')
           ::EAlert::TwitterFilter.by_keywords(config, event_name, debug, server)
-          STDIN.reopen    '/dev/null'
-          STDOUT.reopen   '/dev/null', 'a'
-          STDERR.reopen   STDOUT
+          unless debug
+            STDIN.reopen    '/dev/null'
+            STDOUT.reopen   '/dev/null', 'a'
+            STDERR.reopen   STDOUT
+          end
         end
         Process.detach(child_pid)
       end

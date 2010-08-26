@@ -17,8 +17,8 @@ begin
     gem.add_development_dependency 'webmock',         "~> 1.3.4"
     gem.add_development_dependency 'simplecov-html',  '~> 0.3.5'
     
-    gem.add_dependency 'mongo',                       '~> 0.19.1'
-    gem.add_dependency 'mongo_ext',                   '~> 0.19.1'
+    gem.add_dependency 'mongo',                       '~> 1.0.7'
+    gem.add_dependency 'mongo_ext',                   '~> 0.19.3'
     gem.add_dependency 'twitter-stream',              '~> 0.1.8'
     gem.add_dependency 'yajl-ruby',                   '~> 0.7.7'
     gem.add_dependency 'simplegeo',                   '~> 0.0.3'
