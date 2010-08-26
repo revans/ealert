@@ -9,8 +9,8 @@ module EAlert
     # @api    private
     #
     def self.kill_event(name)
-      pid = File.read(File.join(::EAlert::USER_CONFIG, "pids/#{name}.pid")) 
-      Process.kill("TERM", pid) if pid
+      pid = File.read(File.join(::EAlert::USER_CONFIG, "pids/#{name}.pid")).to_i
+      Process.kill("TERM", pid) unless pid.zero?
     end
     
     
