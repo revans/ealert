@@ -1,0 +1,75 @@
+button,html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outline:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+header, footer, aside, nav, article, section, menu { display: block; }
+
+body {
+	background-color: 		#E3DDCA;
+}
+
+
+#greet {
+	float: 					left;
+	margin: 				10px;
+}
+
+#greet p{
+	background: 			#fffff0;
+	padding:				5px
+}
+
+#msg {
+	clear: 					both;
+	float: 					left;
+	margin: 				0px 0px 0px 50px;
+}
+
+#footer {
+	clear: 					both;
+	margin: 				30px;
+	font: 					12px "Helvetica", sans-serif;
+	color: 					#444;
+	float: 					left;
+}
+
+
+/* ---------------------------------------------------------------------------------
+	Tweet Layout
+--------------------------------------------------------------------------------- */
+div.tweet {
+	clear: 					both;
+	width: 					730px; /* 750 */
+	padding: 				10px;
+	float: 					left;
+	margin: 				10px 0px;
+	border: 				1px solid #948C75;
+	-moz-border-radius: 	5px; 
+	-webkit-border-radius: 	5px;
+	border-radius:			5px;
+	background-color: 		#F0ECE1;
+}
+
+div.avatar {
+	float: 					left;
+	width: 					30px;	/* 50px */
+	padding: 				0px 10px;
+}
+
+div.avatar img {
+	width: 					50px;
+}
+
+div.tweet_text {
+	float: 					left;
+	width: 					650px; /* 675px */
+	padding: 				0px 0px 0px 25px;
+}
+
+div.tweet_text p {
+	line-height: 			120%;
+}
+
+p.tweeter {
+	margin: 				10px 0px 0px 0px;
+	font: 					12px "Helvetica", sans-serif;
+	font-style: 			italic;
+	color: 					#777;
+}
