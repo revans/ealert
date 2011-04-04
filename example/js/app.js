@@ -31,9 +31,9 @@ jQuery(function($) {
   function greet(str){ $("#greet").append("<p>" +  str); };
 
   ws = new WebSocket("ws://localhost:9393/");
-  ws.onmessage = function(evt) { $("#msg").prepend(TwitterParsing.covertToHtml(evt.data)); };
-  ws.onclose = function() { greet("The Event Alert live streaming has been shutdown."); };
-  ws.onopen = function() {
+  ws.onmessage  = function(evt) { $("#msg").prepend(TwitterParsing.covertToHtml(evt.data)); };
+  ws.onclose    = function() { greet("The Event Alert live streaming has been shutdown."); };
+  ws.onopen     = function() {
     greet("<p>Connecting to Event Alert live streaming.<p>");
   };
 });

@@ -22,7 +22,9 @@ module EAlert
     #
     def self.event(options)  
       name    = options.event
-      config  = File.open(File.join(::EAlert::USER_CONFIG, 'events.yaml')) { |event| YAML::load(event) }
+      config  = File.open(File.expand_path(File.join(::EAlert::USER_CONFIG, 'events.yaml'))) do |event|
+        YAML::load(event)
+      end
       fork_event(config[name.to_s], name, options)
     end
     
@@ -64,7 +66,7 @@ module EAlert
     # @api    private
     #
     def self.write_pid(event, pid)
-      file = File.join(::EAlert::USER_CONFIG, "pids")
+      file = File.expand_path(File.join(::EAlert::USER_CONFIG, "pids"))
       system("mkdir -p #{file}") unless File.exists?(file)
       File.open(File.join(file, "#{event}.pid"), 'w+') { |f| f.write(pid) }
     end

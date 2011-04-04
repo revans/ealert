@@ -18,7 +18,7 @@ module EAlert
       # @api    private
       #
       def user_config
-        File.join(::EAlert::USER_CONFIG, 'events.yaml')
+        File.expand_path(File.join(::EAlert::USER_CONFIG, 'events.yaml'))
       end
       
       
