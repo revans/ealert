@@ -22,9 +22,7 @@ module EAlert
     #
     def self.event(options)  
       name    = options.event
-      config  = File.open(File.expand_path(File.join(::EAlert::USER_CONFIG, 'events.yaml'))) do |event|
-        YAML::load(event)
-      end
+      config  = File.open(File.expand_path(File.join(::EAlert::USER_CONFIG, 'events.yaml'))) { |event| YAML::load(event) }
       fork_event(config[name.to_s], name, options)
     end
     
